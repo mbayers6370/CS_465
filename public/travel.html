@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!-- Website template by freewebsitetemplates.com -->
-<html>
+<html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
 	<title>Dive Sites - Bhaccasyoniztas Beach Resort Website Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
@@ -11,15 +12,23 @@
 		<div id="page">
 			<div id="header">
 				<div id="logo">
-					<a href="index.html"><img src="images/logo.png" alt="LOGO" height="100" width="200"></a>
+					<a href="index.html"><img class="logo-full" src="images/logo.png" alt="Travlr Getaways" height="200" width="200"><img class="logo-bird" src="images/Bird_Oragami.png" alt="Travlr Getaways" height="200" width="200"></a>
 				</div>
 				<div id="navigation">
-					<ul>
+					<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+						<span class="nav-toggle-icon" aria-hidden="true">
+							<span class="nav-toggle-bar"></span>
+							<span class="nav-toggle-bar"></span>
+							<span class="nav-toggle-bar"></span>
+						</span>
+						<span class="nav-toggle-label">Menu</span>
+					</button>
+					<ul id="primary-navigation">
 						<li>
 							<a href="index.html">Home</a>
 						</li>
 						<li class="selected">
-							<a href="travel.html">Travel</a>
+							<a href="/travel">Travel</a>
 						</li>
 						<li>
 							<a href="rooms.html">Rooms</a>
@@ -46,8 +55,8 @@
 							<h1>Travel</h1>
 							<ul id="sites">
 								<li>
-									<a href=“travel.html"><img src="images/reef1.jpg" alt="Img"></a>
-									<h2><a href=“travel.html">Gale Reef</a></h2>
+									<a href="/travel"><img src="images/reef1.jpg" alt="Img"></a>
+									<h2><a href="/travel">Gale Reef</a></h2>
 									<p>
 										Sed et augue lorem. In sit amet placerat arcu. Mauris volutpat ipsum ac justo mollis vel vestibulum orci gravida. Vestibulum sit amet porttitor odio. Nulla facilisi. Fusce at pretium felis.
 									</p>
@@ -56,8 +65,8 @@
 									</p>
 								</li>
 								<li>
-									<a href=“travel.html"><img src="images/reef2.jpg" alt="Img"></a>
-									<h2><a href=“travel.html">Dawson’s Reef</a></h2>
+									<a href="/travel"><img src="images/reef2.jpg" alt="Img"></a>
+									<h2><a href="/travel">Dawson’s Reef</a></h2>
 									<p>
 										Integer magna leo, posuere et dignissim vitae, porttitor at odio. Pellentesque a metus nec magna placerat volutpat. Nunc nisi mi, elementum sit amet aliquet quis, tristique quis nisl. Curabitur odio lacus, blandit ut hendrerit
 									</p>
@@ -66,8 +75,8 @@
 									</p>
 								</li>
 								<li>
-									<a href=“travel.html"><img src="images/reef3.jpg" alt="Img"></a>
-									<h2><a href=“travel.html">Claire’s REEF</a></h2>
+									<a href="/travel"><img src="images/reef3.jpg" alt="Img"></a>
+									<h2><a href="/travel">Claire’s REEF</a></h2>
 									<p>
 										Donec sed felis risus. Nulla facilisi. Donec a orci tellus, et auctor odio. Fusce ac orci nibh, quis semper arcu. Cras orci neque, euismod et accumsan ac, sagittis molestie lorem. Proin odio sapien, elementum at tempor non.
 									</p>
@@ -88,7 +97,7 @@
 						<a href="index.html">Home</a>
 					</li>
 					<li class="active">
-						<a href=“travel.html">Travel</a>
+						<a href="/travel">Travel</a>
 					</li>
 					<li>
 						<a href="rooms.html">Rooms</a>
@@ -107,13 +116,17 @@
 					</li>
 				</ul>
 				<div id="connect">
-					<a href="http://pinterest.com/fwtemplates/" target="_blank" class="pinterest"></a> <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a> <a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a> <a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a>
+					<a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest (opens in a new tab)"><span class="social-icon pinterest" aria-hidden="true"></span></a>
+					<a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook (opens in a new tab)"><span class="social-icon facebook" aria-hidden="true"></span></a>
+					<a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter) (opens in a new tab)"><span class="social-icon x" aria-hidden="true"></span></a>
+					<a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in a new tab)"><span class="social-icon instagram" aria-hidden="true"></span></a>
 				</div>
 			</div>
 			<p>
-				© 2023 by BHACCASYONIZTAS BEACH RESORT. All Rights Reserved
+				© 2026 by Travlr Getaways. All Rights Reserved
 			</p>
 		</div>
 	</div>
+	<script src="js/navigation.js"></script>
 </body>
 </html>
