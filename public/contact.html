@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!-- Website template by freewebsitetemplates.com -->
-<html>
+<html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
 	<title>Contact - Travlr Getaways Website Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
@@ -11,15 +12,23 @@
 		<div id="page">
 			<div id="header">
 				<div id="logo">
-					<a href="index.html"><img src="images/logo.png" alt="LOGO" height="100" width="200"></a>
+					<a href="index.html"><img class="logo-full" src="images/logo.png" alt="Travlr Getaways" height="200" width="200"><img class="logo-bird" src="images/Bird_Oragami.png" alt="Travlr Getaways" height="200" width="200"></a>
 				</div>
 				<div id="navigation">
-					<ul>
+					<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+						<span class="nav-toggle-icon" aria-hidden="true">
+							<span class="nav-toggle-bar"></span>
+							<span class="nav-toggle-bar"></span>
+							<span class="nav-toggle-bar"></span>
+						</span>
+						<span class="nav-toggle-label">Menu</span>
+					</button>
+					<ul id="primary-navigation">
 						<li>
 							<a href="index.html">Home</a>
 						</li>
 						<li>
-							<a href="travel.html">Travel</a>
+							<a href="/travel">Travel</a>
 						</li>
 						<li>
 							<a href="rooms.html">Rooms</a>
@@ -44,38 +53,43 @@
 					<div>
 						<div id="contact" class="body">
 							<h1>Contact</h1>
+							<p class="contact-intro">
+								Tell us where you want to go next. Our travel concierge will help shape a getaway that feels effortless from the first note.
+							</p>
 							<form action="index.html" method="post">
 								<table>
 									<tbody>
 										<tr>
-											<td>Name:</td>
-											<td><input type="text" value="" class="txtfield"></td>
+											<td><label for="contact-name">Name:</label></td>
+											<td><input id="contact-name" name="name" type="text" class="txtfield"></td>
 										</tr> <tr>
-											<td>Email:</td>
-											<td><input type="text" value="" class="txtfield"></td>
+											<td><label for="contact-email">Email:</label></td>
+											<td><input id="contact-email" name="email" type="email" class="txtfield"></td>
 										</tr> <tr>
-											<td>Subject:</td>
-											<td><input type="text" value="" class="txtfield"></td>
+											<td><label for="contact-subject">Subject:</label></td>
+											<td><input id="contact-subject" name="subject" type="text" class="txtfield"></td>
 										</tr> <tr>
-											<td class="txtarea">Message:</td>
-											<td><textarea></textarea></td>
+											<td class="txtarea"><label for="contact-message">Message:</label></td>
+											<td><textarea id="contact-message" name="message"></textarea></td>
 										</tr> <tr>
 											<td></td>
-											<td><input type="submit" value="" class="btn"></td>
+											<td><input type="submit" value="Send" class="btn"></td>
 										</tr>
 									</tbody>
 								</table>
 							</form>
-							<h2>Travlr Getaways</h2>
-							<p>
-								<span>Address:</span> 123 Lorem Ipsum Cove, Sed Ut City, LI 12345
-							</p>
-							<p>
-								<span>Telephone Number:</span> 1-800-999-9999
-							</p>
-							<p>
-								<span>Fax Number:</span> 1-800-111-1111
-							</p>
+							<div class="contact-details">
+								<h2>Travlr Getaways</h2>
+								<p>
+									<span>Address</span> 123 Lorem Ipsum Cove, Sed Ut City, LI 12345
+								</p>
+								<p>
+									<span>Telephone</span> 1-800-999-9999
+								</p>
+								<p>
+									<span>Fax</span> 1-800-111-1111
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -88,7 +102,7 @@
 						<a href="index.html">Home</a>
 					</li>
 					<li>
-						<a href="travel.html">Travel</a>
+						<a href="/travel">Travel</a>
 					</li>
 					<li>
 						<a href="rooms.html">Rooms</a>
@@ -107,13 +121,17 @@
 					</li>
 				</ul>
 				<div id="connect">
-					<a href="http://pinterest.com/fwtemplates/" target="_blank" class="pinterest"></a> <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a> <a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a> <a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a>
+					<a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest (opens in a new tab)"><span class="social-icon pinterest" aria-hidden="true"></span></a>
+					<a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook (opens in a new tab)"><span class="social-icon facebook" aria-hidden="true"></span></a>
+					<a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter) (opens in a new tab)"><span class="social-icon x" aria-hidden="true"></span></a>
+					<a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in a new tab)"><span class="social-icon instagram" aria-hidden="true"></span></a>
 				</div>
 			</div>
 			<p>
-				© 2023 by Travlr Getaways. All Rights Reserved
+				© 2026 by Travlr Getaways. All Rights Reserved
 			</p>
 		</div>
 	</div>
+	<script src="js/navigation.js"></script>
 </body>
 </html>
