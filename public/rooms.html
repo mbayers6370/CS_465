@@ -6,13 +6,14 @@
 	<meta charset="UTF-8">
 	<title>Rooms - Travlr Getaways Website Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<link rel="icon" type="image/png" href="images/Bird_Oragami.png">
 </head>
 <body>
 	<div id="background">
 		<div id="page">
 			<div id="header">
 				<div id="logo">
-					<a href="index.html"><img class="logo-full" src="images/logo.png" alt="Travlr Getaways" height="200" width="200"><img class="logo-bird" src="images/Bird_Oragami.png" alt="Travlr Getaways" height="200" width="200"></a>
+					<a href="index.html"><img class="logo-full" src="images/logo.png" alt="Travlr Getaways" height="200" width="200"><img class="logo-bird" src="images/Bird_Oragami.png" alt="Travlr Getaways" height="200" width="200"><span class="logo-wordmark"><span class="logo-brand">Travlr</span><span class="logo-subbrand">getaways</span></span></a>
 				</div>
 				<div id="navigation">
 					<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
@@ -52,31 +53,55 @@
 				<div class="box">
 					<div>
 						<div class="body">
-							<h1>Rooms</h1>
+							<div class="rooms-intro">
+								<h1>Rooms</h1>
+								<p>Quiet rooms with polished details, warm light, and space to settle in after days spent between lake and mountain.</p>
+							</div>
 							<ul id="rooms">
 								<li>
-									<a href="rooms.html"><img src="images/first-class.jpg" alt="Img"></a>
-									<h2><a href="rooms.html">First Class Room</a></h2>
-									<p>
-										Cras dui sapien, feugiat vitae tristique ut, lobortis tempor orci. Donec pulvinar sagittis metus ut tristique. Pellentes que habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas idios.
-									</p>
-									<span class="rate">Rate: 220 / Day</span>
+									<a href="rooms.html"><img src="images/Small.jpg" alt="Small room with warm modern finishes"></a>
+									<div class="room-details">
+										<h2><a href="rooms.html">The Nook</a></h2>
+										<p>
+											A compact, polished room for quick getaways and quiet solo stays. It keeps the essentials close: soft linens, warm light, and a simple place to reset between lake walks and early starts.
+										</p>
+										<ul class="room-amenities">
+											<li>Compact layout</li>
+											<li>Sleeps 1-2</li>
+											<li>Breakfast available</li>
+										</ul>
+										<span class="rate">From 150 / night</span>
+									</div>
 								</li>
 								<li>
-									<a href="rooms.html"><img src="images/deluxe.jpg" alt="Img"></a>
-									<h2><a href="rooms.html">Deluxe Room</a></h2>
-									<p>
-										Sed et augue lorem. In sit amet placerat arcu. Mauris volutpat ipsum ac justo mollis vel vestibulum orci gravida. Vestibulum sit amet porttitor odio. Nulla facilisi. Fusce at pretium felis.
-									</p>
-									<span class="rate">Rate: 150 / Day</span>
+									<a href="rooms.html"><img src="images/Medium.jpg" alt="Medium room with refined lodging details"></a>
+									<div class="room-details">
+										<h2><a href="rooms.html">The Drift Room</a></h2>
+										<p>
+											A balanced room with more space to unpack, read, and settle in after a day outside. The mood is easy and considered, with enough room to make a weekend feel unhurried.
+										</p>
+										<ul class="room-amenities">
+											<li>Extra floor space</li>
+											<li>Sleeps 2</li>
+											<li>Reading nook</li>
+										</ul>
+										<span class="rate">From 190 / night</span>
+									</div>
 								</li>
 								<li>
-									<a href="rooms.html"><img src="images/suite.jpg" alt="Img"></a>
-									<h2><a href="rooms.html">Suite Room</a></h2>
-									<p>
-										Sed et augue lorem. In sit amet placerat arcu. Mauris volutpat ipsum ac justo mollis vel vestibulum orci gravida. Vestibulum sit amet porttitor odio. Nulla facilisi. Fusce at pretium felis.
-									</p>
-									<span class="rate">Rate: 180 / Day</span>
+									<a href="rooms.html"><img src="images/suite.jpg" alt="Luxe suite for an elevated alpine stay"></a>
+									<div class="room-details">
+										<h2><a href="rooms.html">The Luxe Suite</a></h2>
+										<p>
+											The most spacious stay in the house, made for longer weekends and slower evenings. Separate corners for lounging, sleeping, and planning the next morning give the suite an easy residential feel.
+										</p>
+										<ul class="room-amenities">
+											<li>Separate lounge</li>
+											<li>Sleeps 4</li>
+											<li>Late checkout</li>
+										</ul>
+										<span class="rate">From 260 / night</span>
+									</div>
 								</li>
 							</ul>
 						</div>
@@ -91,7 +116,7 @@
 						<a href="index.html">Home</a>
 					</li>
 					<li>
-						<a href="/travel">Travele</a>
+						<a href="/travel">Travel</a>
 					</li>
 					<li class="active">
 						<a href="rooms.html">Rooms</a>
