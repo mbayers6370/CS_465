@@ -7,7 +7,7 @@ const trips = JSON.parse(
 
 /* GET travel view */
 const travel = (req, res) => {
-  res.render('travel', { title: 'Travlr Getaways', trips });
+  res.render('travel', { title: 'Travel - Travlr Getaways', trips });
 };
 
 module.exports = {
