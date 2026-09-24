@@ -9,6 +9,13 @@
 		return;
 	}
 
+	var setScrollState = function () {
+		document.body.classList.toggle('has-scrolled', window.scrollY > 4);
+	};
+
+	setScrollState();
+	window.addEventListener('scroll', setScrollState, { passive: true });
+
 	toggle.addEventListener('click', function () {
 		var isOpen = navigation.classList.toggle('is-open');
 		document.body.classList.toggle('nav-open', isOpen);
