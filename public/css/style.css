@@ -90,11 +90,12 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
 #sidebar .section a:hover::after, #sidebar .section a:focus-visible::after { opacity: 1; }
 #sidebar .section a:hover img, #sidebar .section a:focus-visible img { transform: scale(1.04); }
 #testimonials.box { margin-top: clamp(20px, 4vw, 38px); }
-#testimonials > div > div { display: grid; gap: 18px; border-radius: 8px; padding: clamp(24px, 4vw, 42px); background: #f3f6f5; border: 1px solid var(--line); }
-#main #testimonials > div > div { padding: clamp(28px, 5vw, 48px); }
-#testimonials h3 { margin: 0; font-size: clamp(28px, 4vw, 42px); }
-#testimonials p { max-width: 980px; color: #465662; font-size: clamp(18px, 2.2vw, 24px); font-weight: 300; line-height: 1.55; margin: 0; }
-#testimonials p span { display: block; margin-top: 18px; color: var(--teal-dark); font-size: 16px; text-align: left; }
+#testimonials > div > div { --testimonial-pad: clamp(24px, 4vw, 42px); display: grid; gap: 18px; border-radius: 8px; padding: var(--testimonial-pad); border: 1px solid var(--ink); }
+#main #testimonials > div > div { padding: clamp(28px, 5vw, 48px); background: var(--ink); }
+#testimonials h3 { color: rgba(255, 255, 255, .72); margin: 0; font-size: clamp(26px, 7vw, 34px); line-height: 1.08; }
+#testimonials p { max-width: 980px; color: rgba(255, 255, 255, .9); font-size: clamp(18px, 2.2vw, 24px); font-weight: 300; line-height: 1.55; margin: 0; }
+#testimonials p span { display: block; margin-top: 18px; color: rgba(255, 255, 255, .72); font-size: 16px; text-align: left; }
+#testimonials p span a { color: rgba(255, 255, 255, .86); }
 #testimonials p span a { text-decoration: none; }
 #testimonials p span a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 #rooms, #foods, #sites { list-style: none; margin: 0; padding: 0; }
@@ -260,7 +261,9 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
 	#main ul li h4 { min-height: 0; padding-top: 28px; padding-right: 30px; padding-bottom: 18px; }
 	#main ul li p { padding: 24px 30px 0; font-size: 17px; line-height: 1.58; }
 	#main ul li .read-more { margin: 16px 30px 30px; padding-inline: 0; }
-	#main #testimonials > div > div { grid-template-columns: minmax(220px, .3fr) minmax(0, .7fr); align-items: start; padding: 44px; }
+	#main #testimonials > div > div { --testimonial-pad: clamp(42px, 5vw, 64px); grid-template-columns: minmax(0, 1fr); align-items: start; gap: clamp(18px, 2.5vw, 28px); padding: var(--testimonial-pad); }
+	#testimonials h3 { width: auto; max-width: none; margin: calc(var(--testimonial-pad) * -1) calc(var(--testimonial-pad) * -1) 0; padding: calc(var(--testimonial-pad) * .58) var(--testimonial-pad); border-bottom: 1px solid rgba(255, 255, 255, .22); font-size: clamp(30px, 2.8vw, 44px); line-height: 1.05; text-align: left; }
+	#testimonials p { justify-self: center; max-width: 880px; font-size: clamp(17px, 1.65vw, 21px); line-height: 1.62; }
 	#testimonials p span { text-align: right; }
 	#rooms { gap: 28px; }
 	#rooms > li { display: grid; grid-template-columns: minmax(320px, .95fr) minmax(360px, 1.05fr); min-height: 420px; align-items: stretch; }
