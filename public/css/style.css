@@ -234,7 +234,9 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
 	#header::before { display: none; }
 	#logo { justify-self: start; margin: 0; }
 	#logo .logo-bird { display: block; width: 38px; filter: none; transform: none; }
-	#logo .logo-wordmark { display: inline-flex; font-size: 22px; }
+	body.has-scrolled #logo .logo-bird { filter: none; }
+	#logo .logo-wordmark { display: inline-flex; flex-direction: column; align-items: center; gap: 0; font-size: 22px; line-height: .9; text-align: center; }
+	#logo .logo-subbrand { transform: none; }
 	#logo .logo-full { display: none; }
 	#navigation { justify-self: center; min-width: 0; background: var(--paper); }
 	.nav-toggle { display: none; }
