@@ -6,6 +6,12 @@ const options = {
   }
 };
 
+const renderUnavailable = (res, status, message) => res.status(status).render('travel-detail', {
+  title: 'Travel - Travlr Getaways',
+  trip: null,
+  message
+});
+
 /* GET travel view */
 const travel = async (req, res) => {
   try {
@@ -51,6 +57,42 @@ const travel = async (req, res) => {
   }
 };
 
+/* GET travel detail view */
+const travelDetails = async (req, res) => {
+  try {
+    const response = await fetch(`${tripsEndpoint}/${req.params.tripCode}`, options);
+
+    if (!response.ok) {
+      return renderUnavailable(
+        res,
+        response.status,
+        `Unable to retrieve this trip from the API. Status: ${response.status}`
+      );
+    }
+
+    const trip = await response.json();
+
+    if (!trip || Array.isArray(trip) || typeof trip !== 'object') {
+      return renderUnavailable(res, 500, 'The trips API returned an unexpected response.');
+    }
+
+    trip.startDate = new Date(trip.start).toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    });
+
+    res.render('travel-detail', {
+      title: `${trip.name} - Travlr Getaways`,
+      trip
+    });
+  } catch (err) {
+    console.log(`Travel detail API request failed: ${err}`);
+    renderUnavailable(res, 502, 'This trip is temporarily unavailable.');
+  }
+};
+
 module.exports = {
-  travel
+  travel,
+  travelDetails
 };

@@ -53,22 +53,34 @@
 				<div class="box">
 					<div>
 						<div class="body">
-							<div class="travel-intro">
-								<h1>Travel</h1>
-								<p>Polished alpine escapes shaped around still water, pale peaks, and days that unfold without hurry.</p>
-							</div>
 							{{#if message}}
-							<p class="travel-message">{{message}}</p>
+							<div class="travel-detail-message">
+								<h1>Travel</h1>
+								<p>{{message}}</p>
+								<a href="/travel">Back to Travel</a>
+							</div>
 							{{/if}}
-							<ul id="sites">
-								{{#each trips}}
-								<li>
-									<a href="/travel/{{this.code}}"><img src="/images/{{this.image}}" alt="{{this.name}}"></a>
-									<h2><a href="/travel/{{this.code}}">{{this.name}}</a></h2>
-									{{{this.description}}}
-								</li>
-								{{/each}}
-							</ul>
+							{{#if trip}}
+							<article class="travel-detail">
+								<a class="travel-back" href="/travel">Back to Travel</a>
+								<img class="travel-detail-image" src="/images/{{trip.image}}" alt="{{trip.name}}">
+								<div class="travel-detail-content">
+									<div>
+										<p class="travel-detail-code">{{trip.code}}</p>
+										<h1>{{trip.name}}</h1>
+									</div>
+									<div class="travel-detail-meta">
+										<p><span>Length</span>{{trip.length}}</p>
+										<p><span>Starts</span>{{trip.startDate}}</p>
+										<p><span>Resort</span>{{trip.resort}}</p>
+										<p><span>Rate</span>{{trip.perPerson}}</p>
+									</div>
+									<div class="travel-detail-description">
+										{{{trip.description}}}
+									</div>
+								</div>
+							</article>
+							{{/if}}
 						</div>
 					</div>
 				</div>
