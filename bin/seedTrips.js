@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
 
-require('../app_server/models/db');
-const Trip = require('../app_server/models/travlr');
+require('../app_api/models/db');
+const Trip = require('../app_api/models/travlr');
 
 const trips = JSON.parse(
   fs.readFileSync(path.join(__dirname, '../data/trips.json'), 'utf8')
