@@ -21,6 +21,10 @@ export class TripData {
     return this.http.get<Message[]>(`${this.apiOrigin}/api/messages`);
   }
 
+  setMessageReadState(messageId: string, isRead: boolean): Observable<Message> {
+    return this.http.patch<Message>(`${this.apiOrigin}/api/messages/${encodeURIComponent(messageId)}/read`, { isRead });
+  }
+
   getTrip(tripCode: string): Observable<Trip> {
     return this.http.get<Trip>(`${this.apiUrl}/${encodeURIComponent(tripCode)}`);
   }

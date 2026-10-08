@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Trip } from '../models/trip';
+import { Message } from '../models/message';
 import { TripData } from '../services/trip-data';
 
 @Component({
@@ -12,6 +13,7 @@ import { TripData } from '../services/trip-data';
 })
 export class Overview implements OnInit {
   trips: Trip[] = [];
+  messages: Message[] = [];
   errorMessage = '';
 
   constructor(private tripData: TripData) {}
@@ -30,6 +32,20 @@ export class Overview implements OnInit {
     )[0];
   }
 
+  get unreadMessageCount(): number {
+    return this.messages.filter((message) => !message.isRead).length;
+  }
+
+  get latestMessage(): Message | undefined {
+    return [...this.messages].sort((first, second) =>
+      new Date(second.createdAt).getTime() - new Date(first.createdAt).getTime()
+    )[0];
+  }
+
+  messageSubject(message: Message): string {
+    return message.subject || (message.kind === 'trip' ? 'Trip inquiry' : message.kind === 'room' ? 'Room inquiry' : 'Contact message');
+  }
+
   imageUrl(filename: string): string {
     return this.tripData.imageUrl(filename);
   }
@@ -38,6 +54,11 @@ export class Overview implements OnInit {
     this.tripData.getTrips().subscribe({
       next: (trips) => this.trips = trips,
       error: (error) => this.errorMessage = error.error?.message ?? 'Unable to load overview.'
+    });
+
+    this.tripData.getMessages().subscribe({
+      next: (messages) => this.messages = messages,
+      error: () => this.messages = []
     });
   }
 }

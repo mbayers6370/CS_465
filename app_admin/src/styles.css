@@ -26,9 +26,9 @@ ion-icon { display: block; font-size: 1.25rem; }
 .logo-subbrand { color: #a8d6ce; font: 400 .74rem/1.1 'Avenir Next', 'Gill Sans', sans-serif; letter-spacing: .04em; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
-.admin-navigation { display: flex; gap: .25rem; margin-top: .8rem; }
-.admin-navigation a, .view-site { display: inline-flex; min-height: 2.5rem; align-items: center; gap: .45rem; padding: .45rem .65rem; border-radius: .28rem; color: inherit; font: 500 .95rem/1 var(--display); text-decoration: none; }
-.admin-navigation a.is-active { background: rgba(255, 255, 255, .14); }
+.admin-navigation { display: flex; justify-content: center; gap: .25rem; margin-top: .8rem; }
+.admin-navigation a, .view-site { display: inline-flex; position: relative; min-height: 2.5rem; align-items: center; gap: .45rem; padding: .45rem .65rem; border-radius: .28rem; color: inherit; font: 500 .95rem/1 var(--display); text-decoration: none; }
+.admin-navigation a.is-active::after { content: ""; position: absolute; right: .65rem; bottom: .28rem; left: .65rem; height: 1px; background: #a8d6ce; }
 .admin-navigation a[aria-disabled='true'] { opacity: .72; }
 .admin-navigation ion-icon, .view-site ion-icon { font-size: 1.1rem; }
 .view-site { display: none; }

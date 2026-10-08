@@ -1,6 +1,7 @@
 .trips-page { padding-top: 1.25rem; }
-.add-trip-button { display: inline-flex; align-items: center; gap: .3rem; margin-top: 1rem; padding: .62rem .9rem; }
-.add-trip-button ion-icon { font-size: 1.15rem; }
+.add-trip-button { display: inline-flex; min-width: 5.9rem; align-items: center; justify-content: center; gap: .22rem; margin-top: 1rem; border: 1px solid #8bb3ac; border-radius: 999px; padding: .34rem .58rem; background: transparent; color: var(--teal-dark); font: 600 .74rem/1 var(--body); white-space: nowrap; }
+.add-trip-button:hover, .add-trip-button:focus { border-color: var(--teal-dark); background: #eaf3f1; color: var(--teal-dark); }
+.add-trip-button ion-icon { font-size: .9rem; }
 .trip-collection { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.4rem; }
 .empty-trips { padding: 2.5rem 1rem; border: 1px dashed var(--line); border-radius: .5rem; text-align: center; }
 
@@ -16,7 +17,8 @@
 
 @media (min-width: 640px) {
   .page-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
-  .add-trip-button { margin-top: 0; }
+  .add-trip-button { gap: .28rem; margin-top: 0; padding: .42rem .72rem; font-size: .82rem; }
+  .add-trip-button ion-icon { font-size: 1rem; }
   .trip-collection { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .delete-dialog { padding: 2.35rem 2.5rem 2.2rem; }
 }

@@ -3,7 +3,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { Message, MessageKind } from '../models/message';
 import { TripData } from '../services/trip-data';
 
-type MessageFilter = 'all' | MessageKind;
+type MessageFilter = 'all' | 'unread' | MessageKind;
 
 @Component({
   selector: 'app-messages',
@@ -15,14 +15,26 @@ type MessageFilter = 'all' | MessageKind;
 export class Messages implements OnInit {
   messages: Message[] = [];
   activeFilter: MessageFilter = 'all';
+  selectedMessageId: string | null = null;
   errorMessage = '';
+  readStateError = '';
 
   constructor(private tripData: TripData) {}
 
   get filteredMessages(): Message[] {
-    return this.activeFilter === 'all'
-      ? this.messages
-      : this.messages.filter((message) => message.kind === this.activeFilter);
+    if (this.activeFilter === 'all') {
+      return this.messages;
+    }
+
+    if (this.activeFilter === 'unread') {
+      return this.messages.filter((message) => !message.isRead);
+    }
+
+    return this.messages.filter((message) => message.kind === this.activeFilter);
+  }
+
+  get unreadCount(): number {
+    return this.messages.filter((message) => !message.isRead).length;
   }
 
   filterLabel(kind: MessageKind): string {
@@ -31,6 +43,40 @@ export class Messages implements OnInit {
 
   setFilter(filter: MessageFilter): void {
     this.activeFilter = filter;
+    this.selectedMessageId = null;
+  }
+
+  isSelected(message: Message): boolean {
+    return this.selectedMessageId === message._id;
+  }
+
+  messageSubject(message: Message): string {
+    return message.subject || this.filterLabel(message.kind);
+  }
+
+  toggleMessage(message: Message): void {
+    this.readStateError = '';
+    this.selectedMessageId = this.isSelected(message) ? null : message._id;
+
+    if (!message.isRead && this.selectedMessageId) {
+      this.updateReadState(message, true);
+    }
+  }
+
+  markUnread(message: Message): void {
+    this.readStateError = '';
+    this.updateReadState(message, false);
+  }
+
+  private updateReadState(message: Message, isRead: boolean): void {
+    this.tripData.setMessageReadState(message._id, isRead).subscribe({
+      next: (updatedMessage) => {
+        this.messages = this.messages.map((currentMessage) =>
+          currentMessage._id === updatedMessage._id ? updatedMessage : currentMessage
+        );
+      },
+      error: (error) => this.readStateError = error.error?.message ?? 'Unable to update message status.'
+    });
   }
 
   ngOnInit(): void {

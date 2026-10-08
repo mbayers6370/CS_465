@@ -33,6 +33,8 @@ router
   .get(ctrlMessages.messagesList)
   .post(ctrlMessages.messagesCreate);
 
+router.patch('/messages/:messageId/read', ctrlMessages.messagesSetReadState);
+
 router
   .route('/trips/:tripCode')
   .get(ctrlTrips.tripsFindByCode)

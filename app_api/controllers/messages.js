@@ -33,7 +33,30 @@ const messagesCreate = async (req, res) => {
   }
 };
 
+const messagesSetReadState = async (req, res) => {
+  if (typeof req.body.isRead !== 'boolean') {
+    return res.status(400).json({ message: 'A read state is required.' });
+  }
+
+  try {
+    const message = await Message.findByIdAndUpdate(
+      req.params.messageId,
+      { isRead: req.body.isRead },
+      { new: true, runValidators: true }
+    ).lean();
+
+    if (!message) {
+      return res.status(404).json({ message: 'Message not found.' });
+    }
+
+    return res.status(200).json(message);
+  } catch (err) {
+    return res.status(400).json({ message: 'Unable to update message status.' });
+  }
+};
+
 module.exports = {
   messagesList,
-  messagesCreate
+  messagesCreate,
+  messagesSetReadState
 };

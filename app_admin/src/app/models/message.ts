@@ -12,5 +12,6 @@ export interface Message {
   travelers?: number;
   preferredDate?: string;
   message: string;
+  isRead: boolean;
   createdAt: string;
 }

@@ -4,7 +4,7 @@
       <h2>Trips</h2>
       <p>Manage published travel experiences.</p>
     </div>
-    <button type="button" class="btn btn-primary add-trip-button" (click)="addTrip()"><ion-icon name="add-outline" aria-hidden="true"></ion-icon> Add Trip</button>
+    <button type="button" class="btn add-trip-button" (click)="addTrip()"><ion-icon name="add-outline" aria-hidden="true"></ion-icon> Add Trip</button>
   </div>
 
   <section class="trip-collection" *ngIf="trips.length; else noTrips" aria-label="Published trips">

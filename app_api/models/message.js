@@ -10,7 +10,8 @@ const messageSchema = new mongoose.Schema({
   email: { type: String, required: true, trim: true, lowercase: true },
   travelers: { type: Number, min: 1 },
   preferredDate: { type: Date },
-  message: { type: String, trim: true, default: '' }
+  message: { type: String, trim: true, default: '' },
+  isRead: { type: Boolean, default: false }
 }, { collection: 'messages', timestamps: true });
 
 module.exports = mongoose.model('Message', messageSchema);
