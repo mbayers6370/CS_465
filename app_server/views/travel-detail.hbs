@@ -63,7 +63,7 @@
 							{{#if trip}}
 							<article class="travel-detail">
 								<a class="travel-back" href="/travel">Back to Travel</a>
-								<img class="travel-detail-image" src="/images/{{trip.image}}" alt="{{trip.name}}">
+								<img class="travel-detail-image" src="/images/{{trip.image}}" onerror="this.onerror=null;this.src='/images/Travel.jpg';" alt="{{trip.name}}">
 								<div class="travel-detail-content">
 									<div>
 										<p class="travel-detail-code">{{trip.code}}</p>
@@ -78,6 +78,21 @@
 									<div class="travel-detail-description">
 										{{{trip.description}}}
 									</div>
+									<section class="booking-panel" id="availability">
+										<h2>Plan your stay</h2>
+										<p>Tell us your preferred timing and we’ll confirm availability within 24 hours.</p>
+										{{#if bookingSuccess}}<p class="booking-success">Your request is in. We’ll be in touch shortly.</p>{{/if}}
+										{{#if bookingError}}<p class="booking-error">{{bookingError}}</p>{{/if}}
+										<form method="post" action="/travel/{{trip.code}}/request">
+											<label for="name">Your name</label><input id="name" name="name" value="{{bookingValues.name}}" required>
+											<label for="email">Email address</label><input id="email" name="email" type="email" value="{{bookingValues.email}}" required>
+											<label for="travelers">Travelers</label><input id="travelers" name="travelers" type="number" min="1" value="{{bookingValues.travelers}}" required>
+											<label for="preferredDate">Preferred departure</label><input id="preferredDate" name="preferredDate" type="date" value="{{bookingValues.preferredDate}}">
+											<label for="message">Anything we should know?</label><textarea id="message" name="message" rows="4">{{bookingValues.message}}</textarea>
+											<button class="booking-button" type="submit">Request availability</button>
+										</form>
+										<p class="booking-note">Small-group departures, tailored timing, and a response within 24 hours.</p>
+									</section>
 								</div>
 							</article>
 							{{/if}}

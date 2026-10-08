@@ -63,9 +63,11 @@
 							<ul id="sites">
 								{{#each trips}}
 								<li>
-									<a href="/travel/{{this.code}}"><img src="/images/{{this.image}}" alt="{{this.name}}"></a>
+									<a href="/travel/{{this.code}}"><img src="/images/{{this.image}}" onerror="this.onerror=null;this.src='/images/Travel.jpg';" alt="{{this.name}}"></a>
 									<h2><a href="/travel/{{this.code}}">{{this.name}}</a></h2>
-									{{{this.description}}}
+									<div class="travel-card-description">{{{this.description}}}</div>
+									<div class="travel-card-meta"><span>{{this.length}}</span>{{#if this.startDate}}<span>{{this.startDate}}</span>{{/if}}<span>{{this.perPerson}}</span></div>
+									<div class="travel-card-actions"><a class="booking-button" href="/travel/{{this.code}}#availability">Check availability</a></div>
 								</li>
 								{{/each}}
 							</ul>

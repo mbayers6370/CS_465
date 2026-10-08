@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { TripData } from '../services/trip-data';
 @Component({
   selector: 'app-edit-trip',
   imports: [CommonModule, ReactiveFormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './edit-trip.html',
   styleUrl: './edit-trip.css'
 })
@@ -15,6 +16,9 @@ export class EditTrip implements OnInit {
   readonly tripForm;
   tripCode = '';
   errorMessage = '';
+  imageErrorMessage = '';
+  imagePreviewUrl = '';
+  imageUploading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,7 +46,10 @@ export class EditTrip implements OnInit {
     }
 
     this.tripData.getTrip(this.tripCode).subscribe({
-      next: (trip) => this.tripForm.patchValue({ ...trip, start: this.toDateInputValue(trip.start) }),
+      next: (trip) => {
+        this.tripForm.patchValue({ ...trip, start: this.toDateInputValue(trip.start) });
+        this.imagePreviewUrl = this.tripData.imageUrl(trip.image);
+      },
       error: (error) => this.errorMessage = error.error?.message ?? 'Unable to load trip.'
     });
   }
@@ -62,6 +69,27 @@ export class EditTrip implements OnInit {
 
   cancel(): void {
     this.router.navigate(['/']);
+  }
+
+  onImageSelected(event: Event): void {
+    const image = (event.target as HTMLInputElement).files?.[0];
+    if (!image) {
+      return;
+    }
+
+    this.imageUploading = true;
+    this.imageErrorMessage = '';
+    this.tripData.uploadTripImage(image).subscribe({
+      next: ({ filename }) => {
+        this.tripForm.controls.image.setValue(filename);
+        this.imagePreviewUrl = this.tripData.imageUrl(filename);
+        this.imageUploading = false;
+      },
+      error: (error) => {
+        this.imageErrorMessage = error.error?.message ?? 'Unable to upload image.';
+        this.imageUploading = false;
+      }
+    });
   }
 
   private toDateInputValue(value: string): string {

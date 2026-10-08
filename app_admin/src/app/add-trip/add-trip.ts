@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,12 +8,16 @@ import { Trip } from '../models/trip';
 @Component({
   selector: 'app-add-trip',
   imports: [CommonModule, ReactiveFormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './add-trip.html',
   styleUrl: './add-trip.css',
 })
 export class AddTrip {
   readonly tripForm;
   errorMessage = '';
+  imageErrorMessage = '';
+  imagePreviewUrl = '';
+  imageUploading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,5 +50,26 @@ export class AddTrip {
 
   cancel(): void {
     this.router.navigate(['/']);
+  }
+
+  onImageSelected(event: Event): void {
+    const image = (event.target as HTMLInputElement).files?.[0];
+    if (!image) {
+      return;
+    }
+
+    this.imageUploading = true;
+    this.imageErrorMessage = '';
+    this.tripData.uploadTripImage(image).subscribe({
+      next: ({ filename }) => {
+        this.tripForm.controls.image.setValue(filename);
+        this.imagePreviewUrl = this.tripData.imageUrl(filename);
+        this.imageUploading = false;
+      },
+      error: (error) => {
+        this.imageErrorMessage = error.error?.message ?? 'Unable to upload image.';
+        this.imageUploading = false;
+      }
+    });
   }
 }

@@ -1,0 +1,31 @@
+.overview-page { display: grid; gap: 1.4rem; }
+.overview-page .page-heading { margin-bottom: 0; }
+.overview-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; }
+.overview-stats article { display: grid; gap: .35rem; padding: 1rem; border: 1px solid var(--line); border-radius: .75rem; background: #fff; }
+.overview-stats span, .section-label { color: #71817e; font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.overview-stats strong { color: var(--ink); font: 600 clamp(1.65rem, 6vw, 2.4rem)/1 var(--display); }
+.next-trip { display: flex; flex-direction: column; gap: 1.25rem; padding: 1.4rem; border-radius: .8rem; background: var(--ink); color: #fff; }
+.next-trip h3 { margin: .4rem 0; font: 400 clamp(1.6rem, 7vw, 2.3rem)/1.05 var(--display); }
+.next-trip p { margin: 0; color: rgba(255, 255, 255, .76); }
+.next-trip .section-label { color: #aad9d0; }
+.overview-actions { display: flex; flex-wrap: wrap; gap: .55rem; }
+.overview-actions .btn { border-radius: 999px; }
+.overview-actions .btn-outline-primary { border-color: rgba(255, 255, 255, .55); color: #fff; }
+.overview-actions .btn-outline-primary:hover { border-color: #fff; background: rgba(255, 255, 255, .12); }
+.overview-actions .btn-primary { border-color: #aad9d0; background: #aad9d0; color: var(--ink); }
+.overview-roster { border: 1px solid var(--line); border-radius: .75rem; background: #fff; }
+.roster-heading { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; padding: 1rem; border-bottom: 1px solid var(--line); }
+.roster-heading h3, .roster-item h4 { margin: 0; font: 600 1.25rem/1 var(--display); }
+.roster-heading a { color: var(--teal-dark); font: 400 .95rem/1 var(--display); }
+.roster-item { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: .75rem; align-items: center; padding: .85rem 1rem; border-bottom: 1px solid var(--line); }
+.roster-item:last-child { border-bottom: 0; }
+.roster-item img { width: 3rem; height: 3rem; border-radius: .35rem; object-fit: cover; }
+.roster-item h4 { font-size: 1rem; }
+.roster-item p { margin: .25rem 0 0; color: #71817e; font-size: .88rem; }
+.roster-item > span { grid-column: 2; color: #71817e; font: .9rem/1 var(--display); }
+
+@media (min-width: 640px) {
+  .next-trip { flex-direction: row; justify-content: space-between; align-items: end; }
+  .roster-item { grid-template-columns: 3rem minmax(0, 1fr) auto; }
+  .roster-item > span { grid-column: auto; }
+}

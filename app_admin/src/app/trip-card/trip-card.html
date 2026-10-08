@@ -1,25 +1,11 @@
-<div class="card h-100">
-  <img
-    src="/images/{{ trip.image }}"
-    class="card-img-top"
-    alt="{{ trip.name }}"
-  />
-
-  <div class="card-body">
-    <h5 class="card-title">{{ trip.name }}</h5>
-
-    <h6 class="card-subtitle mb-2 text-muted">
-      {{ trip.resort }}
-    </h6>
-
-    <p class="card-text">
-      {{ trip.length }} | {{ trip.perPerson }}
-    </p>
-
-    <p class="card-text">
-      {{ trip.start }}
-    </p>
-
-    <button type="button" class="btn btn-outline-primary" (click)="editTrip()">Edit Trip</button>
+<article class="trip-row">
+  <img [src]="imageUrl(trip.image)" alt="{{ trip.name }}">
+  <div class="trip-content">
+    <div class="trip-identity"><h3>{{ trip.name }}</h3><span>{{ trip.code }}</span></div>
+    <div class="trip-description" [innerHTML]="trip.description"></div>
   </div>
-</div>
+  <div class="trip-actions">
+    <button type="button" class="btn btn-outline-danger icon-button" (click)="requestDelete()" aria-label="Delete {{ trip.name }}"><ion-icon name="trash-outline" aria-hidden="true"></ion-icon></button>
+    <button type="button" class="btn btn-outline-primary" (click)="editTrip()"><ion-icon name="create-outline" aria-hidden="true"></ion-icon> Edit</button>
+  </div>
+</article>
